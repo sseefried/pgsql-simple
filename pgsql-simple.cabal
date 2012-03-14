@@ -20,13 +20,13 @@ extra-source-files:
 library
   exposed-modules:
     Database.PostgreSQL.Simple
+    Database.PostgreSQL.Base
     Database.PostgreSQL.Simple.Param
     Database.PostgreSQL.Simple.QueryParams
     Database.PostgreSQL.Simple.QueryResults
     Database.PostgreSQL.Simple.Result
     Database.PostgreSQL.Simple.Types
   other-modules:
-    Database.PostgreSQL.Base
     Database.PostgreSQL.Base.Types
 
   build-depends:
@@ -42,7 +42,7 @@ library
     time,
     network >= 2.2,
     binary >= 0.5,
-    mtl >= 2.0,
+    mtl,
     MonadCatchIO-transformers >= 0.2,
     utf8-string >= 0.3 && < 0.4,
     containers >= 0.3

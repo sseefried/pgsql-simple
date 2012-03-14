@@ -176,7 +176,7 @@ close Connection{connectionHandle} = liftIO$ do
     return Nothing
 
 -- | Run a simple query on a connection.
-query :: (MonadCatchIO m)
+query :: (MonadIO m,MonadCatchIO m)
       => Connection -- ^ The connection.
       -> ByteString              -- ^ The query.
       -> m ([Field],[[Maybe ByteString]])
@@ -187,7 +187,7 @@ query conn sql = do
     _           -> return ([],[])
 
 -- | Run a simple query on a connection.
-execQuery :: (MonadCatchIO m)
+execQuery :: (MonadIO m,MonadCatchIO m)
       => Connection -- ^ The connection.
       -> ByteString              -- ^ The query.
       -> m (Integer,Maybe ([Field],[[Maybe ByteString]]))
@@ -205,7 +205,7 @@ execQuery conn sql = liftIO $ do
              Nothing     -> return $ (tagCount,Nothing)
 
 -- | Exec a command.
-exec :: (MonadCatchIO m)
+exec :: (MonadIO m,MonadCatchIO m)
      => Connection
      -> ByteString
      -> m Integer
